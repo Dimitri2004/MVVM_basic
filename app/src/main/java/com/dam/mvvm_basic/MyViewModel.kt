@@ -65,29 +65,10 @@ class MyViewModel(): ViewModel() {
             Log.d(TAG_LOG, "no es correcto")
             estadoActual.value = Estados.ADIVINANDO
             Log.d(TAG_LOG, "otro intento - Estado: ${estadoActual.value}")
-            cuentaAtras()
             //lanzamos estados auxiliares en paralelo
             estadosAuxiliares("Fallo")
             false
         }
-    }
-    fun cuentaAtras():Int{
-        viewModelScope.launch {
-            while (estadoActual.value == Estados.ADIVINANDO) {
-                if (cuenta.value <= 1) {
-                    estadoActual.value = Estados.INICIO
-                    cuenta.value=5
-                }else{
-                    delay(2000)
-                    cuenta.value -=1
-                    Log.d(TAG_LOG, "Cuenta : ${cuenta.value}")
-                    delay(2000)
-                }
-            }
-            reiniciar()
-        }
-        return cuenta.value
-
     }
     fun  reiniciar(){
         cuenta.value=5
@@ -102,6 +83,18 @@ class MyViewModel(): ViewModel() {
             // los recorremos
             var estadoAux = EstadosAuxiliares.AUX1
             Log.d(TAG_LOG, "estado (corutina): ${estadoAux}")
+                while (estadoAux==EstadosAuxiliares.AUX1) {
+                    if (cuenta.value == 0) {
+                        estadoActual.value = Estados.INICIO
+                        cuenta.value=5
+                        reiniciar()
+                        estadoAux= EstadosAuxiliares.AUX2
+                    }else{
+                        delay(1000)
+                        cuenta.value -=1
+                        Log.d(TAG_LOG, "Cuenta : ${cuenta.value}")
+                    }
+                }
             Log.d(TAG_LOG, "mensaje (corutina): ${msg}")
             delay(1500)
             estadoAux = EstadosAuxiliares.AUX2
