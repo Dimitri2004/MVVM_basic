@@ -2,6 +2,7 @@ package com.dam.mvvm_basic
 
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -42,6 +43,7 @@ fun IU(miViewModel: MyViewModel) {
         verticalArrangement = Arrangement.SpaceAround)
     {
         Column {
+            Contador(miViewModel)
             Row {
                 // creo un boton rojo
                 Boton(miViewModel, Colores.CLASE_ROJO)
@@ -72,6 +74,7 @@ fun Boton(miViewModel: MyViewModel, enum_color: Colores) {
     var _activo = miViewModel.estadoActual.collectAsState().value.boton_activo
 
 
+
     // separador entre botones
     Spacer(modifier = Modifier.size(10.dp))
 
@@ -89,6 +92,19 @@ fun Boton(miViewModel: MyViewModel, enum_color: Colores) {
         // utilizamos el texto del enum
         Text(text = enum_color.txt, fontSize = 10.sp)
     }
+}
+@Composable
+fun Contador(miViewModel: MyViewModel){
+    var contar=miViewModel.cuenta.collectAsState().value
+    var _activoStart=miViewModel.estadoActual.collectAsState().value.boton_activo
+
+    Spacer(modifier = Modifier.size(10.dp))
+
+    Box(modifier = Modifier.size((80).dp, (40).dp)){
+        if (_activoStart) {
+            Text("Tiempo: $contar")
+        }
+        }
 }
 
 @Composable
