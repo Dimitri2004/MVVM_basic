@@ -2,6 +2,7 @@ package com.dam.mvvm_basic
 
 import androidx.compose.ui.graphics.Color
 
+
 /**
  * Clase para almacenar los datos del juego
  */
@@ -41,8 +42,24 @@ enum class Estados(val start_activo: Boolean, val boton_activo: Boolean) {
  * Estados auxiliares para corutinas en el ViewModel
  * @param txt: String nombre del estado
  */
-enum class EstadosAuxiliares(val txt: String) {
-    AUX1(txt = "aux1"),
-    AUX2(txt = "aux2"),
-    AUX3(txt = "aux3"),
+enum class EstadosAuxiliares (val txt: String,var unit:(String)->String){
+
+    AUX1(
+        txt = "aux1",
+        unit = fun (txt):String{
+            return txt
+        }
+    ),
+    AUX2(txt = "aux2",
+        unit = fun (txt):String{
+            return txt.lowercase()
+        }
+    ),
+    AUX3(txt = "aux3",fun (txt):String{
+    return txt.uppercase()
+    }
+    ),
+
+
+
 }

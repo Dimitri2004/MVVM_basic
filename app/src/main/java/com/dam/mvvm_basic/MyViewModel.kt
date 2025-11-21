@@ -82,7 +82,6 @@ class MyViewModel(): ViewModel() {
             // inicializamos estado auxiliar
             // los recorremos
             var estadoAux = EstadosAuxiliares.AUX1
-            Log.d(TAG_LOG, "estado (corutina): ${estadoAux}")
             //Se ejecuta en las courrutinas si pasa por la courrutina de estadoAux1
                 while (estadoAux==EstadosAuxiliares.AUX1) {
                     if (cuenta.value == 0) {
@@ -96,15 +95,16 @@ class MyViewModel(): ViewModel() {
                         Log.d(TAG_LOG, "Cuenta : ${cuenta.value}")
                     }
                 }
-            Log.d(TAG_LOG, "mensaje (corutina): ${msg}")
+            Log.d(TAG_LOG, "estado (corutina): ${estadoAux}")
+            Log.d(TAG_LOG, "mensaje (corutina): ${EstadosAuxiliares.AUX1.unit(msg)}")
             delay(1500)
             estadoAux = EstadosAuxiliares.AUX2
             Log.d(TAG_LOG, "estado (corutina): ${estadoAux}")
-            Log.d(TAG_LOG, "mensaje (corutina): ${msg}")
+            Log.d(TAG_LOG, "mensaje (corutina): ${EstadosAuxiliares.AUX2.unit(msg)}")
             delay(1500)
             estadoAux = EstadosAuxiliares.AUX3
             Log.d(TAG_LOG, "estado (corutina): ${estadoAux}")
-            Log.d(TAG_LOG, "mensaje (corutina): ${msg}")
+            Log.d(TAG_LOG, "mensaje (corutina): ${EstadosAuxiliares.AUX3.unit(msg)}")
             delay(1500)
         }
     }
