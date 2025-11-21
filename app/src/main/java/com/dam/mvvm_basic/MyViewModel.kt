@@ -21,6 +21,8 @@ class MyViewModel(): ViewModel() {
     // usamos mutable, ya que la queremos modificar
     var _numbers = MutableStateFlow(0)
 
+    var cuenta: MutableStateFlow<Int> = MutableStateFlow(5)
+
     // inicializamos variables cuando instanciamos
     init {
         // estado inicial
@@ -67,6 +69,20 @@ class MyViewModel(): ViewModel() {
             estadosAuxiliares("Fallo")
             false
         }
+    }
+    fun cuentaAtras():Int{
+        if (estadoActual.value== Estados.ADIVINANDO){
+            while (!estadosAuxiliares().equals("Ganador")){
+                cuenta.value -=1
+                Log.d(TAG_LOG,"Cuenta : ${cuenta.value}")
+            }
+        }else{
+            if (cuenta.value<1) {
+                estadoActual.value= Estados.INICIO
+                cuenta.value = 5
+            }
+        }
+        return cuenta.value
     }
 
     /**
