@@ -83,6 +83,7 @@ class MyViewModel(): ViewModel() {
             // los recorremos
             var estadoAux = EstadosAuxiliares.AUX1
             Log.d(TAG_LOG, "estado (corutina): ${estadoAux}")
+            //Se ejecuta en las courrutinas si pasa por la courrutina de estadoAux1
                 while (estadoAux==EstadosAuxiliares.AUX1) {
                     if (cuenta.value == 0) {
                         estadoActual.value = Estados.INICIO
