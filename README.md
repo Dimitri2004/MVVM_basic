@@ -35,3 +35,8 @@ Añade a los estados auxiliares (sin cambiar el enum) una función própia que t
 En la función estadosAuxiliares(msg: String = ""):
 
     El logcat (mensaje (corutina))debe usar lo que devuelve las funciones de los estados para imprimir el mensaje (msg)
+
+## Opinion de Implementacion
+Veo necesaria la implementacion de un contador para que el usuario necesite reponder a tiempo para darle dinamica a la app ,
+
+pero no veo la necesidad de añadir un sistema de modificacion de tipo de letra de las courrutinas ya que no le veo utilidad en futuro.

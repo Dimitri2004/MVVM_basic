@@ -83,18 +83,18 @@ class MyViewModel(): ViewModel() {
             // los recorremos
             var estadoAux = EstadosAuxiliares.AUX1
             //Se ejecuta en las courrutinas si pasa por la courrutina de estadoAux1
-                while (estadoAux==EstadosAuxiliares.AUX1) {
+                while (estadoAux== EstadosAuxiliares.AUX1) {
                     if (cuenta.value == 0) {
-                        estadoActual.value = Estados.INICIO
-                        cuenta.value=5
                         reiniciar()
-                        estadoAux= EstadosAuxiliares.AUX2
-                    }else{
+                        estadoActual.value = Estados.INICIO
+                        estadoAux = EstadosAuxiliares.AUX2
+                    } else {
                         delay(1000)
-                        cuenta.value -=1
+                        cuenta.value -= 1
                         Log.d(TAG_LOG, "Cuenta : ${cuenta.value}")
                     }
                 }
+            delay(1000)
             Log.d(TAG_LOG, "estado (corutina): ${estadoAux}")
             Log.d(TAG_LOG, "mensaje (corutina): ${EstadosAuxiliares.AUX1.unit(msg)}")
             delay(1500)
