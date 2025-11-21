@@ -78,14 +78,19 @@ class MyViewModel(): ViewModel() {
                     estadoActual.value = Estados.INICIO
                     cuenta.value=5
                 }else{
-                    cuenta.value -= 1
+                    delay(2000)
+                    cuenta.value -=1
                     Log.d(TAG_LOG, "Cuenta : ${cuenta.value}")
                     delay(2000)
                 }
             }
+            reiniciar()
         }
         return cuenta.value
 
+    }
+    fun  reiniciar(){
+        cuenta.value=5
     }
 
     /**
