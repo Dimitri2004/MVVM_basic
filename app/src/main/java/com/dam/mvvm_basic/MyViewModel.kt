@@ -46,7 +46,6 @@ class MyViewModel(): ViewModel() {
         // cambiamos estado, por lo tanto la IU se actualiza
         estadoActual.value = Estados.ADIVINANDO
     }
-
     /**
      * comprobar si el boton pulsado es el correcto
      * @param ordinal: Int numero de boton pulsado
